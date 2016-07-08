@@ -2,10 +2,13 @@
   "name": "mtg-tourney-app",
   "version": "0.1.0",
   "description": "A server which receives pdfs of Player Pairings, and displays that data in mobile friendly, easy-to-check-from-your-seat way. No more stampedes to the pairings sheet!",
-  "main": "server.js",
+  "main": "server/index.js",
   "scripts": {
+    "start": "node server/server.js",
+    "start-dev": "nodemon server/server.js",
     "test": "node test/*.js",
-    "build": "browserify client/index.js -g uglifyify -o public/bundle.js -dv"
+    "build": "NODE_ENV=production browserify client/index.js -g uglifyify -o public/bundle.js -dv",
+    "build-dev": "watchify client/index.js -o public/bundle.js -dv"
   },
   "browserify": {
     "transform": [
@@ -34,15 +37,19 @@
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
-    "uglifyify": "^3.0.2"
+    "nodemon": "^1.9.2",
+    "uglifyify": "^3.0.2",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "formidable": "^1.0.17",
     "mtg-tourney-parser": "^0.1.1",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "xhr": "^2.2.0"
   }
 }
