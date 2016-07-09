@@ -1,20 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import request from 'xhr'
+import { start, html, pull } from 'inu'
 
-import App from './App'
+import app from './App'
 
-document.addEventListener('DOMContentLoaded', function(e) {
-  request.get('/data', (err, res) => {
-    if (err) console.log(err)
+//document.addEventListener('DOMContentLoaded', function(e) {
+  const { views } = start(app)
+  const main = document.querySelector('.main')
 
-    const store = JSON.parse(res.body)
-    console.log('store in client bundle', store)
-
-    const target = document.getElementById('app')
-
-    ReactDOM.render(<App store={store} />, target)
-
-  })
-})
+  pull(
+    views(),
+    pull.drain(function (view) {
+      html.update(main, view)
+    })
+  ) 
+//})
 
