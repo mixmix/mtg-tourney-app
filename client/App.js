@@ -6,6 +6,11 @@ const INITIAL_MODEL = {
   refreshing: false,
   pairings: [],
   filter: undefined,
+  visibleColumns: [
+    'Table',
+    'Player',
+    'Team',
+  ],
 }
 
 const FETCH_PAIRINGS = 'FETCH_PAIRINGS'
@@ -55,6 +60,9 @@ const App = {
       model.pairings.filter( p => p.Player.match(model.filter) ) :
       model.pairings
 
+    const filledColumns = Object.keys(pairings[0] || [])
+    const visibleColumns = model.visibleColumns.filter( col => filledColumns.indexOf(col) > -1 )
+
     return html`
       <div class='main'>
         <h1>MTG table</h1>
@@ -76,14 +84,17 @@ const App = {
             })
           }
         />
-        
-        ${pairings.map( p => html` 
-            <div class='row'>
-              <div class='two columns'>${p.Table}</div> 
-              <div class='ten columns'>${p.Player.replace(/,.*/,'')}, <strong>${p.Player.replace(/[^,]*,/,'')}</strong></div>
-            </div>
-          `)
-        }
+
+        <table class="u-full-width">
+          <tbody>
+            ${pairings.map( pairing => html`
+              <tr>
+                ${visibleColumns.map( col => html`<td>${pairing[col]}</td>` )} 
+              </tr>
+            ` )}
+
+          </tbody>
+        </table>       
       </div>
     `
   },
