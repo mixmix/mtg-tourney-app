@@ -18,10 +18,19 @@ const App = {
   update: (model, action) => {
 
     switch (action.type) {
+      case FETCH_PAIRINGS:
+        return {
+          model,
+          effect: {
+            type: FETCH_PAIRINGS
+          }
+        }
       case UPDATE_PAIRINGS:
-        const pairings = action.pairings
-        const model = { pairings }
-        return { model }
+        let newModel = Object.assign({}, model)
+        newModel.pairings = action.pairings
+        return { 
+          model: newModel
+        }
       default:
         return model
     }
@@ -29,6 +38,15 @@ const App = {
 
   view: (model, dispatch) => html`
     <div class='main'>
+      <div>
+        <button 
+          class='refresh'
+          onclick=${ () => dispatch({type: FETCH_PAIRINGS}) }
+        >
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </button>
+      </div>
+      
       ${model.pairings.map( p => html` 
           <div class='row'>
             <div class='two columns'>${p.Table}</div> 

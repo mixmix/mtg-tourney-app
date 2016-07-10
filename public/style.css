@@ -10,3 +10,9 @@ body {
   max-width: 34rem;
 }
 
+button.refresh {
+  padding: 0;
+  width: 4rem;
+  height: 4rem;
+}
+
