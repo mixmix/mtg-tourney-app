@@ -10,14 +10,53 @@ body {
   max-width: 34rem;
 }
 
+h1 {
+  float: left;
+}
+
 button.refresh {
   font-size: 2rem;
   width: 4rem;
   height: 4rem;
+  margin-top: 1rem;
   padding: 0;
+  float: right;
 }
 
 button.refresh.button-primary {
   color: #fff;
 }
+
+.main input {
+  width: 100%;
+}
+
+.upload-link {
+  padding-top: 10rem;
+}
+
+.upload-link a {
+  color: #aaa;
+}
+
+
+/*upload page */
+
+.upload {
+  font-size: 16px;
+}
+
+.upload .explainer {
+  color: #aaa;
+}
+
+.upload .explainer a {
+  color: #aaa;
+}
+
+.upload input {
+  border: none;
+  padding: 4rem 0;
+}
+
 

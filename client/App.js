@@ -4,12 +4,14 @@ import request from 'xhr'
 
 const INITIAL_MODEL = {
   refreshing: false,
-  pairings: []
+  pairings: [],
+  filter: undefined,
 }
 
 const FETCH_PAIRINGS = 'FETCH_PAIRINGS'
 const REFRESH_PAIRINGS = 'REFRESH_PAIRINGS'
 const UPDATE_PAIRINGS = 'UPDATE_PAIRINGS'
+const ADD_FILTER = 'ADD_FILTER'
 
 const App = {
   init: () => ({
@@ -27,37 +29,64 @@ const App = {
             type: FETCH_PAIRINGS
           }
         }
+
       case UPDATE_PAIRINGS:
         let newModel = Object.assign({}, model, {refreshing: false})
         newModel.pairings = action.pairings
         return { 
           model: newModel
         }
+
+      case ADD_FILTER:
+        const filter = (action.filter) ? 
+          new RegExp( action.filter.split('').join('.*'), 'i') : 
+          undefined
+        return {
+          model: Object.assign({}, model, { filter })
+        }
+
       default:
         return { model }
     }
   },
 
-  view: (model, dispatch) => html`
-    <div class='main'>
-      <div>
+  view: (model, dispatch) => {
+    const pairings = (model.filter) ?
+      model.pairings.filter( p => p.Player.match(model.filter) ) :
+      model.pairings
+
+    return html`
+      <div class='main'>
+        <h1>MTG table</h1>
         <button 
           class="refresh ${(model.refreshing) ? 'button-primary' : ''}"
-          onclick=${ () => dispatch({type: REFRESH_PAIRINGS}) }
+          onclick=${ () => dispatch({
+              type: REFRESH_PAIRINGS
+            })
+          }
         >
           <i class="fa fa-refresh ${(model.refreshing) ? 'fa-spin' : ''}" aria-hidden="true"></i>
         </button>
+        <input 
+          type='text'
+          placeholder='filter'
+          oninput=${ (e) => dispatch({
+              type: ADD_FILTER,
+              filter: e.target.value
+            })
+          }
+        />
+        
+        ${pairings.map( p => html` 
+            <div class='row'>
+              <div class='two columns'>${p.Table}</div> 
+              <div class='ten columns'>${p.Player.replace(/,.*/,'')}, <strong>${p.Player.replace(/[^,]*,/,'')}</strong></div>
+            </div>
+          `)
+        }
       </div>
-      
-      ${model.pairings.map( p => html` 
-          <div class='row'>
-            <div class='two columns'>${p.Table}</div> 
-            <div class='ten columns'>${p.Player.replace(/,.*/,'')}, <strong>${p.Player.replace(/[^,]*,/,'')}</strong></div>
-          </div>
-        `)
-      }
-    </div>
-  `,
+    `
+  },
 
   run: (effect) => {
     switch (effect.type) {

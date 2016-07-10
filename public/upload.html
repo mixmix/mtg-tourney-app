@@ -4,11 +4,21 @@
   <meta charset="UTF-8">
   <title>mtg-tourney</title>
   <link rel="stylesheet" href="style.css">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="skeleton.css">
 </head>
 <body>
-  <form action="/upload" enctype="multipart/form-data" method="post">
-    <input type="file" name="upload" multiple="multiple">
-  </form>
+  <div class='upload'>
+    <div>
+      Select a Pairings/ Table PDF generated from Wizards Event Reporter 4.<br />
+      <em class='explainer'>Print, and then select pdf as the output (you might need to install something like <a href="https://www.foxitsoftware.com/products/pdf-reader/">foxit pdf</a> to be able to print to pdf.</em>
+    </div>
+    <form action="/upload" enctype="multipart/form-data" method="post">
+      <input type="file" name="upload" multiple="multiple" class="button">
+    </form>
+  </div>
 
   <script>
     document.querySelector('input').onchange = function() {
