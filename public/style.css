@@ -11,8 +11,13 @@ body {
 }
 
 button.refresh {
-  padding: 0;
+  font-size: 2rem;
   width: 4rem;
   height: 4rem;
+  padding: 0;
+}
+
+button.refresh.button-primary {
+  color: #fff;
 }
 

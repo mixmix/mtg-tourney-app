@@ -3,10 +3,12 @@ import defer from 'pull-defer'
 import request from 'xhr'
 
 const INITIAL_MODEL = {
+  refreshing: false,
   pairings: []
 }
 
 const FETCH_PAIRINGS = 'FETCH_PAIRINGS'
+const REFRESH_PAIRINGS = 'REFRESH_PAIRINGS'
 const UPDATE_PAIRINGS = 'UPDATE_PAIRINGS'
 
 const App = {
@@ -18,21 +20,21 @@ const App = {
   update: (model, action) => {
 
     switch (action.type) {
-      case FETCH_PAIRINGS:
+      case REFRESH_PAIRINGS:
         return {
-          model,
+          model: Object.assign({}, model, {refreshing: true}),
           effect: {
             type: FETCH_PAIRINGS
           }
         }
       case UPDATE_PAIRINGS:
-        let newModel = Object.assign({}, model)
+        let newModel = Object.assign({}, model, {refreshing: false})
         newModel.pairings = action.pairings
         return { 
           model: newModel
         }
       default:
-        return model
+        return { model }
     }
   },
 
@@ -40,10 +42,10 @@ const App = {
     <div class='main'>
       <div>
         <button 
-          class='refresh'
-          onclick=${ () => dispatch({type: FETCH_PAIRINGS}) }
+          class="refresh ${(model.refreshing) ? 'button-primary' : ''}"
+          onclick=${ () => dispatch({type: REFRESH_PAIRINGS}) }
         >
-          <i class="fa fa-refresh" aria-hidden="true"></i>
+          <i class="fa fa-refresh ${(model.refreshing) ? 'fa-spin' : ''}" aria-hidden="true"></i>
         </button>
       </div>
       

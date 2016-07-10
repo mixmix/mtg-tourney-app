@@ -8,8 +8,13 @@
 <body>
   <form action="/upload" enctype="multipart/form-data" method="post">
     <input type="file" name="upload" multiple="multiple">
-    <input type="submit" value="Upload">
   </form>
+
+  <script>
+    document.querySelector('input').onchange = function() {
+      document.querySelector('form').submit()
+    }
+  </script>
 </body>
 </html>
 
