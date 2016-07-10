@@ -29,11 +29,10 @@ const App = {
 
   view: (model, dispatch) => html`
     <div class='main'>
-      <h1>MTG table pairings</h1>
       ${model.pairings.map( p => html` 
           <div class='row'>
-            <div class='ten columns'>${p.Player}</div>
             <div class='two columns'>${p.Table}</div> 
+            <div class='ten columns'>${p.Player.replace(/,.*/,'')}, <strong>${p.Player.replace(/[^,]*,/,'')}</strong></div>
           </div>
         `)
       }

@@ -1,5 +1,12 @@
+html body {
+  font-size: 24px;
+}
+
 body {
   padding: 20px;
-  max-width: 300px;
+}
+
+.main {
+  max-width: 34rem;
 }
 
