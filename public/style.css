@@ -31,12 +31,17 @@ button.refresh.button-primary {
   width: 100%;
 }
 
-.upload-link {
+.footer-links {
+  max-width: 34rem;
   padding-top: 10rem;
 }
 
-.upload-link a {
+.footer-links a {
   color: #aaa;
+}
+
+.footer-links .source {
+  float: right;
 }
 
 

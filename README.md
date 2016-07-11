@@ -1,5 +1,12 @@
 # mtg-tourney-app
 
+Made to make that "pairings for round 2" crush a little less brutal.
+
+Event organisers upload PDFs exported from Wizards Event Reporter.
+Players load the app on their phone to easily see which table they've been posted to.
+
+![](screenshot.png)
+
 
 ## Deploying to Heroku 
 
