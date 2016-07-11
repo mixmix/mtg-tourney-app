@@ -20,10 +20,16 @@ app.post('/upload', function(req, res) {
   var form = new formidable.IncomingForm()
 
   form.on('file', function(name, file) {
-    if (file.type !== 'application/pdf') res.redirect('/upload.html')
+    if (file.type !== 'application/pdf') {
+      res.redirect('/upload.html')
+      return
+    }
 
     parser(file.path, function(err, data) {
-      if (err) res.redirect('/upload.html')
+      if (err) {
+        res.send(`Error: please upload a valid pdf\n\n ${err}`)
+        return
+      }
 
       store.pairings = data
       res.redirect('/')
