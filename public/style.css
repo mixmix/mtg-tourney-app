@@ -1,5 +1,5 @@
 html body {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 body {
@@ -31,17 +31,33 @@ button.refresh.button-primary {
   width: 100%;
 }
 
+.main td:first-child {
+  padding-left: 2px;
+}
+
 .footer-links {
   max-width: 34rem;
   padding-top: 10rem;
+  color: #aaa;
 }
 
 .footer-links a {
   color: #aaa;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
 }
 
 .footer-links .source {
   float: right;
+}
+
+.footer-links .made-by {
+  text-align: center;
+  font-size: 1.7rem;
+  margin-top: 1rem;
 }
 
 

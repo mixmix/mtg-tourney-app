@@ -10,6 +10,8 @@ const INITIAL_MODEL = {
     'Table',
     'Player',
     'Team',
+    'Points',
+    'Points-', // some quirk sometimes sees the Points column have a - at the end of it
   ],
 }
 
@@ -110,6 +112,7 @@ const App = {
 
           const model = JSON.parse(res.body)
           const pairings = model.pairings
+          console.log(JSON.stringify(model,null,2))
 
           source.resolve(
             pull.values([{
