@@ -8,7 +8,12 @@ Players load the app on their phone to easily see which table they've been poste
 ![](screenshot.png)
 
 
-## Deploying to Heroku 
+## Deploying to Heroku
+
+### One Click
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Command Line
 
 Install the heroku CLI, and clone down this repo.
 In the root of this project, run:
@@ -20,4 +25,3 @@ git remote add heroku https://git.heroku.com/NAME_OF_YOUR_HEROKU_APP.git
 git push heroku master
 heroku open -a NAME_OF_YOUR_HEROKU_APP
 ```
-
