@@ -1,9 +1,9 @@
 {
-  "name": "Magic The Gathering Tournament App",
-  "description": "Made to make that 'pairings for round 2' crush a little less brutal. Event organisers upload PDFs exported from Wizards Event Reporter. Players load the app on their phone to easily see which table they've been posted to.",
+  "name": "MTG Tournament App",
+  "description": "Made to make that 'pairings for round 2' crush a little less brutal.",
   "website": "https://github.com/mixmix/mtg-tourney-app",
   "repository": "https://github.com/mixmix/mtg-tourney-app",
-  "logo": "https://mtg-tourney-app-sample.herokuapp.com/img/sword.png",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/d/da/Mydbtj-masangssanggeom.png",
   "keywords": ["mtg", "magic", "tournament"],
   "env": {
       "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-multi.git"
