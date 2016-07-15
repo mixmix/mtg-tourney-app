@@ -10,10 +10,10 @@ Players load the app on their phone to easily see which table they've been poste
 
 ## Deploying to Heroku
 
-### One Click
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+### Easy One Click
+Just click here: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Command Line
+### Command Line (For Seasoned Pros)
 
 Install the heroku CLI, and clone down this repo.
 In the root of this project, run:
