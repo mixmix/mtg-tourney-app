@@ -1,4 +1,5 @@
-import { start, html, pull } from 'inu'
+import { start, pull } from 'inu'
+import html from 'yo-yo'
 
 import app from './App'
 

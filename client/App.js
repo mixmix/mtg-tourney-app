@@ -1,4 +1,5 @@
-import { html, pull } from 'inu'
+import { pull } from 'inu'
+import html from 'yo-yo'  // currently need to pull in yo-yo directly to be able to yo-yoify
 import defer from 'pull-defer'
 import request from 'xhr'
 
