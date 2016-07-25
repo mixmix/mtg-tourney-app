@@ -19,7 +19,7 @@ This will start an app at a location like `my-app-name.herokuapp.com`. If you wa
 
 ### Command Line (For Seasoned Pros)
 
-Install the heroku CLI, and clone down this repo.
+Install the [heroku toolbelt](https://toolbelt.heroku.com/), and clone down this repo.
 In the root of this project, run:
 
 ```bash
