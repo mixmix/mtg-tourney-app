@@ -1,4 +1,5 @@
 var express = require('express')
+var compression = require('compression')
 //var bodyParser = require('body-parser')
 var path = require('path')
 var formidable = require('formidable')
@@ -10,6 +11,7 @@ var store = {
 
 var app = express()
 //app.use(bodyParser.json())
+app.use(compression())
 app.use(express.static(path.join(__dirname, '../public')))
 
 //app.get('/upload', function(req,res) {
