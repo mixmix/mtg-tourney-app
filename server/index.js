@@ -6,7 +6,8 @@ var formidable = require('formidable')
 var parser = require('mtg-tourney-parser')
 
 var store = {
-  pairings: []
+  pairings: [],
+  round: null
 }
 
 var app = express()
@@ -23,13 +24,14 @@ app.post('/upload', function(req, res) {
       return
     }
 
-    parser(file.path, function(err, data) {
+    parser(file.path, function(err, rowData, round) {
       if (err) {
         res.send(`Error: please upload a valid pdf\n\n ${err}`)
         return
       }
 
-      store.pairings = data
+      store.pairings = rowData
+      store.round = round
       res.redirect('/')
     })
   })

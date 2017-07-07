@@ -6,7 +6,8 @@ import request from 'xhr'
 const INITIAL_MODEL = {
   refreshing: false,
   pairings: [],
-  filter: undefined,
+  round: null,
+  filter: null,
   visibleColumns: [
     'Table',
     'Player',
@@ -39,8 +40,11 @@ const App = {
         }
 
       case UPDATE_PAIRINGS:
-        let newModel = Object.assign({}, model, {refreshing: false})
-        newModel.pairings = action.pairings
+        const newModel = Object.assign({}, model, {
+          refreshing: false,
+          pairings: action.pairings,
+          round: action.round
+        })
         return { 
           model: newModel
         }
@@ -88,6 +92,8 @@ const App = {
           }
         />
 
+        <strong>${model.round}</strong>
+
         <table class="u-full-width">
           <tbody>
             ${pairings.map( pairing => html`
@@ -112,13 +118,13 @@ const App = {
           if (err) console.log(err)
 
           const model = JSON.parse(res.body)
-          const pairings = model.pairings
-          console.log(JSON.stringify(model,null,2))
+          const { pairings, round } = model
 
           source.resolve(
             pull.values([{
               type: UPDATE_PAIRINGS,
-              pairings
+              pairings,
+              round
             }])
          )
         })
