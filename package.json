@@ -47,7 +47,7 @@
     "express": "^4.14.0",
     "formidable": "^1.0.17",
     "inu": "^3.0.2",
-    "mtg-tourney-parser": "^0.1.6",
+    "mtg-tourney-parser": "^0.2.0",
     "pull-defer": "^0.2.2",
     "xhr": "^2.2.0",
     "yo-yo": "^1.2.2"
