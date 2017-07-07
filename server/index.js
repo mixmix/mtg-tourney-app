@@ -14,10 +14,6 @@ var app = express()
 app.use(compression())
 app.use(express.static(path.join(__dirname, '../public')))
 
-//app.get('/upload', function(req,res) {
-  //res.render('upload.html')
-//})
-
 app.post('/upload', function(req, res) {
   var form = new formidable.IncomingForm()
 
