@@ -1,6 +1,6 @@
 {
   "name": "mtg-tourney-app",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A server which receives pdfs of Player Pairings, and displays that data in mobile friendly, easy-to-check-from-your-seat way. No more stampedes to the pairings sheet!",
   "main": "server/index.js",
   "scripts": {
